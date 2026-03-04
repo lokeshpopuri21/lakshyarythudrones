@@ -1,13 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="te">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+
+    <!-- Apple PWA -->
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="లక్ష్య డ్రోన్స్" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#10b981" />
+    <meta name="msapplication-TileColor" content="#020817" />
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lakshya-drones</title>
+
+    <!-- SEO -->
+    <title>లక్ష్య రైతు డ్రోన్స్ & టెక్నాలజీస్ | Precision Agri Drone Services AP & Telangana</title>
+    <meta name="description" content="Lakshya Rythu Drones - Precision drone spraying services for farmers in Andhra Pradesh and Telangana. 95% water saving, DGCA certified pilots." />
+    <meta name="keywords" content="drone spraying, agriculture drone, AP, Telangana, రైతు, డ్రోన్, lakshya, precision farming" />
+
+    <!-- Open Graph (WhatsApp/Social preview) -->
+    <meta property="og:title" content="లక్ష్య రైతు డ్రోన్స్ & టెక్నాలజీస్" />
+    <meta property="og:description" content="Precision drone spraying for AP & Telangana farmers. Book now!" />
+    <meta property="og:image" content="/icons/icon-512x512.png" />
+    <meta property="og:url" content="https://lakshyarythudrones.vercel.app" />
+    <meta property="og:type" content="website" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Register Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('✅ SW registered:', reg.scope))
+            .catch(err => console.log('SW error:', err));
+        });
+      }
+    </script>
   </body>
 </html>
