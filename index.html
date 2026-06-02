@@ -1,54 +1,1063 @@
-<!doctype html>
-<html lang="te">
-  <head>
-    <meta charset="UTF-8" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshya Aerotech – Precision · Innovation · Excellence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght=0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#0057B8;--primary-light:#1a7fe0;--primary-dark:#003d82;
+  --accent:#00C2FF;--accent2:#e8f4ff;
+  --white:#ffffff;--bg:#f5f9ff;
+  --text:#0a1628;--text-muted:#5a6a84;--border:#d0e2f7;--nav-h:72px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;}
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 5%;justify-content:space-between;transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,87,184,0.10);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:44px;width:44px;object-fit:contain;border-radius:8px;}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--primary);letter-spacing:-0.5px;line-height:1.1;}
+.nav-logo-sub{font-size:0.6rem;font-weight:400;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;display:block;}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center;}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--text);text-decoration:none;padding:8px 14px;border-radius:8px;transition:all .2s;}
+.nav-links a:hover{background:var(--accent2);color:var(--primary);}
+.nav-links .dropdown{position:relative;}
+.nav-links .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:white;border:1px solid var(--border);border-radius:14px;padding:10px;min-width:220px;box-shadow:0 12px 40px rgba(0,87,184,0.12);}
+.nav-links .dropdown:hover .dropdown-menu{display:block;}
+.nav-links .dropdown-menu a{display:block;border-radius:8px;font-size:0.84rem;}
+.nav-links .dropdown-menu a:hover{background:var(--accent2);}
+.nav-cta{background:var(--primary);color:white!important;border-radius:8px!important;padding:10px 20px!important;font-weight:600!important;font-size:0.88rem!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--primary-light)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;display:block;transition:0.3s;}
 
-    <!-- Apple PWA -->
-    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="లక్ష్య డ్రోన్స్" />
+/* HERO */
+.hero{min-height:100vh;padding-top:var(--nav-h);background:linear-gradient(135deg,#e8f4ff 0%,#f0f8ff 40%,#ffffff 70%);display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;right:-150px;width:700px;height:700px;background:radial-gradient(circle,rgba(0,87,184,0.08) 0%,transparent 70%);border-radius:50%;}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 5%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,87,184,0.08);border:1px solid rgba(0,87,184,0.2);border-radius:100px;padding:6px 16px 6px 8px;font-size:0.78rem;font-weight:500;color:var(--primary);margin-bottom:24px;}
+.hero-badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:var(--text);margin-bottom:20px;}
+.hero h1 span{color:var(--primary);}
+.hero-sub{font-size:1.05rem;color:var(--text-muted);line-height:1.75;margin-bottom:36px;max-width:480px;}
+.hero-stats{display:flex;gap:32px;margin-bottom:36px;}
+.hero-stat-val{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--primary);}
+.hero-stat-lbl{font-size:0.75rem;color:var(--text-muted);}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--primary);color:white;padding:14px 30px;border-radius:10px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-primary:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,87,184,0.25);}
+.btn-outline{background:transparent;color:var(--primary);padding:14px 30px;border-radius:10px;font-weight:600;font-size:0.95rem;text-decoration:none;border:2px solid var(--border);transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-outline:hover{border-color:var(--primary);background:var(--accent2);}
+.hero-img-wrap{position:relative;}
+.hero-main-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:24px;display:block;}
+.hero-float-card{position:absolute;bottom:-20px;left:-30px;background:white;border:1px solid var(--border);border-radius:16px;padding:14px 20px;box-shadow:0 8px 32px rgba(0,87,184,0.12);display:flex;align-items:center;gap:12px;}
+.float-icon{width:40px;height:40px;background:var(--accent2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+.float-label{font-size:0.75rem;color:var(--text-muted);}
+.float-val{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--text);}
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
+/* SECTION COMMONS */
+section{padding:90px 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.75rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--primary);margin-bottom:12px;}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;letter-spacing:-1px;color:var(--text);margin-bottom:16px;}
+.section-desc{font-size:1.05rem;color:var(--text-muted);line-height:1.7;max-width:560px;}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:56px;}
 
-    <!-- Theme -->
-    <meta name="theme-color" content="#10b981" />
-    <meta name="msapplication-TileColor" content="#020817" />
-    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+/* TICKER */
+.ticker{background:var(--primary);color:white;padding:12px 0;overflow:hidden;white-space:nowrap;}
+.ticker-track{display:inline-flex;gap:60px;animation:tick 28s linear infinite;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{font-size:0.85rem;font-weight:500;letter-spacing:1px;display:inline-flex;align-items:center;gap:16px;}
+.ticker-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;}
 
-    <!-- Viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+/* PRODUCTS */
+.products-section{background:var(--bg);}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+.product-card{background:white;border-radius:20px;overflow:hidden;border:1px solid var(--border);transition:all .3s;cursor:pointer;display:flex;flex-direction:column;}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,87,184,0.12);border-color:var(--primary);}
+.product-img{width:100%;aspect-ratio:16/10;overflow:hidden;position:relative;}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.product-card:hover .product-img img{transform:scale(1.05);}
+.product-tag{position:absolute;top:12px;left:12px;background:var(--primary);color:white;font-size:0.7rem;font-weight:600;padding:4px 10px;border-radius:100px;letter-spacing:.5px;z-index:2;}
+.product-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+.product-name{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+.product-tagline{font-size:0.85rem;color:var(--text-muted);line-height:1.5;flex:1;margin-bottom:16px;}
+.product-links{display:flex;gap:10px;}
+.product-btn{font-size:0.82rem;font-weight:600;padding:8px 16px;border-radius:8px;text-decoration:none;transition:.2s;}
+.product-btn-primary{background:var(--primary);color:white;}
+.product-btn-primary:hover{background:var(--primary-light);}
+.product-btn-ghost{color:var(--primary);border:1px solid var(--border);}
+.product-btn-ghost:hover{border-color:var(--primary);background:var(--accent2);}
 
-    <!-- SEO -->
-    <title>లక్ష్య రైతు డ్రోన్స్ & టెక్నాలజీస్ | Precision Agri Drone Services AP & Telangana</title>
-    <meta name="description" content="Lakshya Rythu Drones - Precision drone spraying services for farmers in Andhra Pradesh and Telangana. 95% water saving, DGCA certified pilots." />
-    <meta name="keywords" content="drone spraying, agriculture drone, AP, Telangana, రైతు, డ్రోన్, lakshya, precision farming" />
+/* SPARE PARTS / ACCESSORIES */
+.parts-section{background:var(--white);}
+.parts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+.part-card{background:var(--bg);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .25s;text-decoration:none;color:inherit;}
+.part-card:hover{border-color:var(--primary);box-shadow:0 8px 28px rgba(0,87,184,0.10);transform:translateY(-4px);}
+.part-card-img{width:100%;aspect-ratio:1/1;overflow:hidden;}
+.part-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.part-card:hover .part-card-img img{transform:scale(1.06);}
+.part-card-body{padding:14px 16px;}
+.part-card-name{font-weight:600;font-size:0.9rem;color:var(--text);margin-bottom:4px;}
+.part-card-tag{font-size:0.75rem;color:var(--primary);font-weight:500;}
 
-    <!-- Open Graph (WhatsApp/Social preview) -->
-    <meta property="og:title" content="లక్ష్య రైతు డ్రోన్స్ & టెక్నాలజీస్" />
-    <meta property="og:description" content="Precision drone spraying for AP & Telangana farmers. Book now!" />
-    <meta property="og:image" content="/icons/icon-512x512.png" />
-    <meta property="og:url" content="https://lakshyarythudrones.vercel.app" />
-    <meta property="og:type" content="website" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+/* STATS */
+.stats-section{background:var(--primary);color:white;padding:80px 5%;}
+.stats-inner{max-width:1200px;margin:0 auto;}
+.stats-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:64px;}
+.stats-quote{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;line-height:1.3;opacity:.95;}
+.stats-quote span{color:var(--accent);}
+.stats-desc{font-size:1rem;line-height:1.7;opacity:.75;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px;}
+.stat-box{background:rgba(255,255,255,0.07);padding:32px 28px;display:flex;flex-direction:column;gap:8px;transition:background .2s;}
+.stat-box:hover{background:rgba(255,255,255,0.12);}
+.stat-icon{font-size:1.5rem;margin-bottom:4px;opacity:.85;}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:800;color:white;line-height:1;}
+.stat-plus{color:var(--accent);}
+.stat-label{font-size:0.85rem;opacity:.7;line-height:1.4;}
+.certif-strip{margin-top:40px;display:flex;gap:40px;flex-wrap:wrap;}
+.certif-item{display:flex;align-items:center;gap:10px;}
+.certif-icon{width:36px;height:36px;background:rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.certif-text{font-size:0.85rem;opacity:.85;font-weight:500;}
 
-    <!-- Register Service Worker -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('✅ SW registered:', reg.scope))
-            .catch(err => console.log('SW error:', err));
-        });
-      }
-    </script>
-  </body>
+/* FOUNDER BLOG */
+.founder-hero{display:grid;grid-template-columns:380px 1fr;gap:56px;align-items:start;}
+.founder-photo-wrap{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:3/4;}
+.founder-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.founder-photo-badge{position:absolute;bottom:16px;left:16px;right:16px;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px;border:1px solid var(--border);}
+.founder-photo-badge span{font-size:1.6rem;}
+.founder-quick-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+.fqs-item{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px 12px;text-align:center;}
+.fqs-val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--primary);}
+.fqs-lbl{font-size:0.72rem;color:var(--text-muted);margin-top:4px;}
+.founder-tag-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.founder-tag{background:var(--accent2);color:var(--primary);font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:100px;border:1px solid rgba(0,87,184,0.2);}
+.founder-date{font-size:0.8rem;color:var(--text-muted);}
+.founder-blog-title{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:800;line-height:1.25;letter-spacing:-0.5px;color:var(--text);margin-bottom:24px;}
+.founder-blog-body{display:flex;flex-direction:column;gap:16px;}
+.founder-blog-body p{font-size:0.97rem;line-height:1.8;color:var(--text-muted);}
+.founder-blog-body em{color:var(--text);font-style:italic;}
+.founder-blog-body h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-top:8px;margin-bottom:-4px;}
+.founder-quote{border-left:4px solid var(--primary);padding:16px 20px;background:var(--accent2);border-radius:0 14px 14px 0;margin:4px 0;font-size:1rem;line-height:1.7;color:var(--text);font-style:italic;}
+.founder-quote cite{display:block;margin-top:10px;font-size:0.8rem;color:var(--primary);font-weight:600;font-style:normal;}
+.founder-expertise-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
+.exp-card{background:white;border:1px solid var(--border);border-radius:20px;padding:28px 24px;transition:all .25s;}
+.exp-card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(0,87,184,0.09);transform:translateY(-4px);}
+.exp-icon{font-size:2rem;margin-bottom:14px;}
+.exp-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--text);margin-bottom:8px;}
+.exp-desc{font-size:0.86rem;color:var(--text-muted);line-height:1.6;}
+
+/* GALLERY */
+.gallery-section{background:var(--bg);}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;}
+.gallery-item{border-radius:16px;overflow:hidden;cursor:pointer;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.gallery-item:hover img{transform:scale(1.08);}
+.gallery-item.tall{grid-row:span 2;}
+.gallery-item.wide{grid-column:span 2;}
+
+/* PARTNERS */
+.partners-section{background:var(--bg);padding:60px 5%;overflow:hidden;}
+.partners-track-wrap{overflow:hidden;position:relative;}
+.partners-track-wrap::before,.partners-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
+.partners-track-wrap::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+.partners-track-wrap::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+.partners-track{display:inline-flex;gap:32px;animation:scroll 30s linear infinite;}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.partner-logo{height:56px;min-width:120px;background:white;border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:12px 24px;font-size:0.8rem;font-weight:600;color:var(--text-muted);white-space:nowrap;}
+.partner-logo:hover{border-color:var(--primary);color:var(--primary);}
+
+/* AWARDS */
+.awards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.award-card{background:white;border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:all .2s;}
+.award-card:hover{border-color:var(--primary);box-shadow:0 8px 32px rgba(0,87,184,0.08);transform:translateY(-4px);}
+.award-badge{width:52px;height:52px;background:var(--accent2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.award-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--text);}
+.award-desc{font-size:0.85rem;color:var(--text-muted);line-height:1.5;}
+.award-year{font-size:0.75rem;font-weight:600;color:var(--primary);letter-spacing:1px;text-transform:uppercase;}
+
+/* VIDEOS */
+.videos-section{background:var(--white);}
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+.video-card{background:white;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .2s;cursor:pointer;}
+.video-card:hover{box-shadow:0 12px 40px rgba(0,87,184,0.10);transform:translateY(-4px);}
+.video-thumb{width:100%;aspect-ratio:16/9;background:#0a1628;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.video-thumb img{width:100%;height:100%;object-fit:cover;opacity:.8;}
+.play-btn{position:absolute;width:52px;height:52px;background:rgba(0,87,184,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s;}
+.play-btn:hover{background:var(--primary);}
+.play-btn svg{width:20px;height:20px;fill:white;margin-left:3px;}
+.video-dur{position:absolute;bottom:8px;right:10px;background:rgba(0,0,0,0.65);color:white;font-size:0.72rem;padding:2px 8px;border-radius:4px;}
+.video-body{padding:18px 20px;}
+.video-title{font-weight:600;font-size:0.9rem;line-height:1.4;color:var(--text);}
+
+/* DEALER */
+.dealer-section{background:linear-gradient(135deg,#0041a3,#0057B8,#0a6fd4);color:white;padding:90px 5%;}
+.dealer-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.dealer-content .section-label{color:rgba(255,255,255,0.7);}
+.dealer-content .section-title{color:white;margin-bottom:20px;}
+.dealer-content p{font-size:1rem;line-height:1.75;opacity:.8;margin-bottom:32px;}
+.dealer-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.dealer-stat{background:rgba(255,255,255,0.1);border-radius:14px;padding:20px;text-align:center;}
+.dealer-stat-val{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;}
+.dealer-stat-lbl{font-size:0.78rem;opacity:.75;margin-top:4px;}
+
+/* BLOG */
+.blog-section{background:var(--bg);}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+.blog-card{background:white;border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .2s;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,87,184,0.09);border-color:var(--primary);}
+.blog-img{width:100%;aspect-ratio:16/9;overflow:hidden;}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.blog-card:hover .blog-img img{transform:scale(1.05);}
+.blog-body{padding:22px;flex:1;display:flex;flex-direction:column;}
+.blog-cat{font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--primary);margin-bottom:10px;}
+.blog-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;line-height:1.4;color:var(--text);margin-bottom:10px;flex:1;}
+.blog-date{font-size:0.78rem;color:var(--text-muted);margin-top:12px;}
+
+/* CONTACT */
+.contact-section{background:var(--white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-form{background:var(--bg);border:1px solid var(--border);border-radius:24px;padding:40px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.form-group label{font-size:0.83rem;font-weight:600;color:var(--text);}
+.form-group input,.form-group select,.form-group textarea{border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);outline:none;transition:border-color .2s;background:white;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.contact-info{display:flex;flex-direction:column;gap:20px;}
+.contact-info-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text);}
+.contact-card{background:white;border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;}
+.contact-card-icon{width:44px;height:44px;min-width:44px;background:var(--accent2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.contact-card-title{font-weight:600;font-size:0.9rem;margin-bottom:4px;}
+.contact-card-val{font-size:0.88rem;color:var(--text-muted);}
+
+/* FOOTER */
+footer{background:#0a1628;color:rgba(255,255,255,0.7);}
+.footer-main{max-width:1200px;margin:0 auto;padding:72px 5% 48px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;}
+.footer-brand-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px;text-decoration:none;}
+.footer-brand-logo img{height:40px;width:40px;object-fit:contain;border-radius:8px;}
+.footer-brand-name{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:white;}
+.footer-desc{font-size:0.88rem;line-height:1.7;margin-bottom:20px;}
+.footer-social{display:flex;gap:10px;}
+.footer-social a{width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:0.85rem;transition:.2s;text-decoration:none;}
+.footer-social a:hover{background:var(--primary);color:white;}
+.footer-col-title{font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:white;margin-bottom:18px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul a{font-size:0.88rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color .2s;}
+.footer-col ul a:hover{color:var(--accent);}
+.footer-newsletter{display:flex;gap:0;margin-top:8px;}
+.footer-newsletter input{flex:1;padding:10px 14px;border-radius:8px 0 0 8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);color:white;font-size:0.85rem;outline:none;}
+.footer-newsletter input::placeholder{color:rgba(255,255,255,0.35);}
+.footer-newsletter button{padding:10px 18px;background:var(--primary);border:none;border-radius:0 8px 8px 0;color:white;font-size:0.85rem;font-weight:600;cursor:pointer;transition:background .2s;}
+.footer-newsletter button:hover{background:var(--primary-light);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:20px 5%;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;font-size:0.82rem;flex-wrap:wrap;gap:10px;}
+.footer-bottom-links{display:flex;gap:20px;}
+.footer-bottom-links a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s;}
+.footer-bottom-links a:hover{color:var(--accent);}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* MOBILE & RESPONSIVE REFACTORING */
+@media(max-width:900px){
+  .hero-inner,.dealer-inner,.contact-grid{grid-template-columns:1fr;}
+  .stats-top{grid-template-columns:1fr;gap:30px;}
+  .footer-main{grid-template-columns:1fr 1fr;}
+  .hero-img-wrap{display:none;}
+  .hamburger{display:flex;}
+  .form-row{grid-template-columns:1fr;}
+  section{padding:60px 5%;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .founder-hero{grid-template-columns:1fr;}
+  .founder-photo-wrap{aspect-ratio:4/3;max-height:380px;}
+
+  /* Fixed CSS-only mobile layout strategy */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px 5%;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 32px rgba(0,87,184,0.12);
+    gap: 12px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+  }
+  .nav-links .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    padding-left: 20px;
+    background: var(--bg);
+    margin-top: 4px;
+  }
+  .nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+@media(max-width:600px){
+  .footer-main{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="logo.jpg" alt="Lakshya Aerotech Logo">
+    <div>
+      <span class="nav-logo-text">Lakshya Aerotech</span>
+      <span class="nav-logo-sub">Precision · Innovation · Excellence</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#spares">Spares & Parts</a></li>
+    <li><a href="#about">About / Founder</a></li>
+    <li class="dropdown">
+      <a href="#">Services ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Sales & Procurement</a>
+        <a href="#">AMC & Repairs</a>
+        <a href="#">Pilot Training</a>
+        <a href="#">DGCA Compliance</a>
+        <a href="#">Custom Builds</a>
+      </div>
+    </li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburgerMenu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        India's One-Stop Drone Solutions Store
+      </div>
+      <h1>Elevate Every<br><span>Mission</span> with<br>the Right Drone</h1>
+      <p class="hero-sub">From precision agriculture to surveillance and logistics — Lakshya Aerotech delivers sales, genuine spare parts, certified service, and pilot training under one roof. Based in Mangalagiri, Andhra Pradesh.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-val">500+</div>
+          <div class="hero-stat-lbl">Drones Deployed</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">20+</div>
+          <div class="hero-stat-lbl">States Covered</div>
+        </div>
+        <div>
+          <div class="hero-stat-val">15+</div>
+          <div class="hero-stat-lbl">Product Lines</div>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+          Explore Products
+        </a>
+        <a href="#contact" class="btn-outline">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="agri-drone-blue.jpg" alt="Lakshya Aerotech Agri Drone" class="hero-main-img">
+      <div class="hero-float-card">
+        <div class="float-icon">✅</div>
+        <div>
+          <div class="float-label">Authorised Dealer</div>
+          <div class="float-val">DGCA Approved</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Sales & Service</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Agri Drones</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Hobbywing X8 Motors</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Flight Controllers</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>GPS Modules</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Spray Systems</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Propellers</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Remote Controllers</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AMC & Repairs</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>DGCA Pilot Training</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Sales & Service</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Agri Drones</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Hobbywing X8 Motors</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Flight Controllers</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>GPS Modules</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Spray Systems</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Propellers</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Remote Controllers</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>AMC & Repairs</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>DGCA Pilot Training</span>
+  </div>
+</div>
+
+<section class="products-section" id="products">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Our Drones</div>
+        <h2 class="section-title">Drones for Every Purpose</h2>
+        <p class="section-desc">We stock, sell, and service India's widest range of commercial drones — agriculture, surveillance, logistics, industrial, and beyond.</p>
+      </div>
+      <a href="#contact" class="btn-outline">Request a Demo</a>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card fade-up">
+        <div class="product-img">
+          <img src="agri-drone-blue.jpg" alt="Agriculture Spray Drone">
+          <span class="product-tag">Bestseller</span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Agriculture Spray Drone</div>
+          <div class="product-tagline">Precision spraying & crop monitoring for modern farms. X8 motor powered, high-payload tank.</div>
+          <div class="product-links">
+            <a href="#contact" class="product-btn product-btn-primary">Enquire Now</a>
+            <a href="#contact" class="product-btn product-btn-ghost">Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img">
+          <img src="agri-drone-blue2.jpg" alt="Multi-Rotor Agri Drone">
+          <span class="product-tag">Popular</span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Multi-Rotor Agri Drone</div>
+          <div class="product-tagline">Hexacopter platform with precision spray booms and smart flight controller for large farms.</div>
+          <div class="product-links">
+            <a href="#contact" class="product-btn product-btn-primary">Enquire Now</a>
+            <a href="#contact" class="product-btn product-btn-ghost">Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img">
+          <img src="agri-drone-kit.jpg" alt="Drone Full Kit with Batteries">
+        </div>
+        <div class="product-body">
+          <div class="product-name">Complete Drone Kit</div>
+          <div class="product-tagline">Ready-to-fly package including drone, LiPo batteries, charger, remote controller and carry case.</div>
+          <div class="product-links">
+            <a href="#contact" class="product-btn product-btn-primary">Enquire Now</a>
+            <a href="#contact" class="product-btn product-btn-ghost">Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img">
+          <img src="drone-survey-agri.jpg" alt="Survey & Mapping Drone">
+          <span class="product-tag">New</span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Survey & Mapping Drone</div>
+          <div class="product-tagline">AI-powered crop health mapping and precision field analysis for smart agriculture.</div>
+          <div class="product-links">
+            <a href="#contact" class="product-btn product-btn-primary">Enquire Now</a>
+            <a href="#contact" class="product-btn product-btn-ghost">Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img">
+          <img src="drone-night-glow.jpg" alt="Night Operations Drone">
+        </div>
+        <div class="product-body">
+          <div class="product-name">Night Operations Drone</div>
+          <div class="product-tagline">LED-equipped hexacopter built for dusk-to-dawn field spraying operations.</div>
+          <div class="product-links">
+            <a href="#contact" class="product-btn product-btn-primary">Enquire Now</a>
+            <a href="#contact" class="product-btn product-btn-ghost">Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-img">
+          <img src="drone-frame-assembly.jpg" alt="Custom Drone Build">
+          <span class="product-tag">Custom</span>
+        </div>
+        <div class="product-body">
+          <div class="product-name">Custom Drone Build</div>
+          <div class="product-tagline">We design and assemble drone platforms to your exact specifications — any payload, any use case.</div>
+          <div class="product-links">
+            <a href="#contact" class="product-btn product-btn-primary">Discuss Build</a>
+            <a href="#contact" class="product-btn product-btn-ghost">Get Quote</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="parts-section" id="spares">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Genuine Parts</div>
+        <h2 class="section-title">Spare Parts & Accessories</h2>
+        <p class="section-desc">Authentic components from top brands — Hobbywing, JMT/JYI, and more. Everything your drone needs, available in stock.</p>
+      </div>
+      <a href="#contact" class="btn-outline">Order Parts</a>
+    </div>
+    <div class="parts-grid">
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="motor-x8.jpg" alt="Hobbywing X8 Motor"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Hobbywing X8 Motor</div>
+          <div class="part-card-tag">100KV CW/CCW · High Torque</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="motor-hobbywing.jpg" alt="Hobbywing XRotor Motor"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Hobbywing XRotor Motor</div>
+          <div class="part-card-tag">Agri-Grade · Weatherproof</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="brushless-motors.jpg" alt="Brushless Motors Set"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Brushless Motors Set</div>
+          <div class="part-card-tag">6-pack · Copper Wound · OEM</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="propellers-bulk.jpg" alt="Carbon Propellers"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Carbon Propellers (Bulk)</div>
+          <div class="part-card-tag">Various sizes · CW & CCW pairs</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img" style="background:#f0f0f0;"><img src="propellers-bulk.jpg" alt="Propeller Blades Pack"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Propeller Blades Pack</div>
+          <div class="part-card-tag">Folding type · Multi-size</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="flight-controller-v9.jpg" alt="V9 Flight Controller"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">V9-FMU Flight Controller</div>
+          <div class="part-card-tag">V9-PMU + FMU + GPS combo</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="gps-flight-controller.jpg" alt="JYI K3-A Pro Flight Controller"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">JYI K3-A Pro Controller</div>
+          <div class="part-card-tag">Dual GPS · Agri Optimised</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="gps-modules.jpg" alt="GPS Modules"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">GPS Modules</div>
+          <div class="part-card-tag">Dual antenna · High accuracy</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="spray-booms.jpg" alt="Spray Boom Assembly"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Spray Boom Assembly</div>
+          <div class="part-card-tag">4-nozzle · Quick-connect</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="escs-pumps.jpg" alt="ESCs & Pumps"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">ESCs & Hobbywing Pumps</div>
+          <div class="part-card-tag">X-Rotor 8L-V1 · 12-14S · 10A</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="remote-controllers.jpg" alt="Remote Controllers"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Smart Remote Controllers</div>
+          <div class="part-card-tag">Built-in screen · Long range</div>
+        </div>
+      </a>
+      <a href="#contact" class="part-card fade-up">
+        <div class="part-card-img"><img src="drone-frames-box.jpg" alt="Drone Frames"></div>
+        <div class="part-card-body">
+          <div class="part-card-name">Drone Frames (MK Aero)</div>
+          <div class="part-card-tag">Pre-assembled · Ready to build</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stats-top fade-up">
+      <div class="stats-quote">"Building Andhra Pradesh's most <span>complete drone ecosystem</span> — one flight at a time."</div>
+      <div class="stats-desc">Lakshya Aerotech is more than a drone store. We are your end-to-end partner — procurement, genuine spare parts, pilot training, and after-sales AMC — for every drone application across India.</div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-icon">🚁</div><div class="stat-num">500<span class="stat-plus">+</span></div><div class="stat-label">Drones Deployed Nationwide</div></div>
+      <div class="stat-box"><div class="stat-icon">📍</div><div class="stat-num">80<span class="stat-plus">+</span></div><div class="stat-label">Dealer Partners Across India</div></div>
+      <div class="stat-box"><div class="stat-icon">🗺️</div><div class="stat-num">20<span class="stat-plus">+</span></div><div class="stat-label">States with Active Presence</div></div>
+      <div class="stat-box"><div class="stat-icon">🌾</div><div class="stat-num">1L<span class="stat-plus">+</span></div><div class="stat-label">Acres Covered with Precision Spraying</div></div>
+      <div class="stat-box"><div class="stat-icon">🔧</div><div class="stat-num">15<span class="stat-plus">+</span></div><div class="stat-label">Drone Brands & Categories</div></div>
+      <div class="stat-box"><div class="stat-icon">🎓</div><div class="stat-num">300<span class="stat-plus">+</span></div><div class="stat-label">Pilots Trained & Certified</div></div>
+    </div>
+    <div class="certif-strip fade-up">
+      <div class="certif-item"><div class="certif-icon">✅</div><div class="certif-text">DGCA Authorised Dealer</div></div>
+      <div class="certif-item"><div class="certif-icon">🏆</div><div class="certif-text">Award-Winning Service</div></div>
+      <div class="certif-item"><div class="certif-icon">🔧</div><div class="certif-text">Certified Service Centre</div></div>
+      <div class="certif-item"><div class="certif-icon">📦</div><div class="certif-text">Genuine OEM Parts in Stock</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">The Visionary Behind</div>
+        <h2 class="section-title">Meet Our Founder</h2>
+        <p class="section-desc">The story of Lakshya Aerotech begins with one engineer's passion for drones and his mission to build Andhra Pradesh's most complete drone store.</p>
+      </div>
+    </div>
+    <div class="founder-hero fade-up">
+      <div class="founder-photo-col">
+        <div class="founder-photo-wrap">
+          <img src="founder-lokesh.jpg" alt="Lokesh Popuri – Founder, Lakshya Aerotech" class="founder-photo">
+          <div class="founder-photo-badge">
+            <span>🚁</span>
+            <div>
+              <div style="font-weight:700;font-size:.9rem;color:var(--text);">Lokesh Popuri</div>
+              <div style="font-size:.75rem;color:var(--text-muted);">Founder & CEO</div>
+            </div>
+          </div>
+        </div>
+        <div class="founder-quick-stats">
+          <div class="fqs-item"><div class="fqs-val">5+</div><div class="fqs-lbl">Years in Drones</div></div>
+          <div class="fqs-item"><div class="fqs-val">500+</div><div class="fqs-lbl">Drones Deployed</div></div>
+          <div class="fqs-item"><div class="fqs-val">20+</div><div class="fqs-lbl">States Served</div></div>
+        </div>
+      </div>
+      <div class="founder-story-col">
+        <div class="founder-tag-row">
+          <span class="founder-tag">Founder's Story</span>
+          <span class="founder-date">June 2026 · 4 min read</span>
+        </div>
+        <h3 class="founder-blog-title">From a Lecture Hall to the Skies — How Lokesh Popuri Built Andhra Pradesh's First One-Stop Drone Store</h3>
+        <div class="founder-blog-body">
+          <p>It was during a technical seminar on drone architecture at JNTU Kakinada that Lokesh Popuri — then a young engineer — looked at the projected cutaway of an unmanned aircraft and had a thought that would change everything: <em>"Why is there no one in Andhra Pradesh who can sell you a drone, supply genuine spare parts, fix it when it breaks, and train you to fly it — all in one place?"</em></p>
+          <p>That question became <strong>Lakshya Aerotech</strong>.</p>
+          <blockquote class="founder-quote">
+            "I didn't just want to sell drones. I wanted to build India's most complete drone ecosystem — where every customer, from a farmer in Guntur to a logistics company in Vijayawada, could find exactly what they need."
+            <cite>— Lokesh Popuri, Founder & CEO</cite>
+          </blockquote>
+          <h3>The Problem He Set Out to Solve</h3>
+          <p>When Lokesh surveyed the market, he found a fragmented landscape. Farmers bought agri drones from one vendor, sourced Hobbywing motors elsewhere, hunted for genuine propellers from a third supplier, and travelled to another city for repairs. There was no single, trusted partner.</p>
+          <h3>Building the Store from the Ground Up</h3>
+          <p>With deep hands-on expertise — from V9 flight controllers and JYI K3-A Pro systems to Hobbywing X8 motors, GPS modules, spray booms, and ESCs — Lokesh didn't just understand drones theoretically. He stocked them, tested them, and built relationships with top OEM suppliers to ensure every part sold at Lakshya Aerotech is 100% genuine. Today the store serves farmers, businesses, research institutions, and defence contractors across 20+ states.</p>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+          <a href="#contact" class="btn-primary">Connect with Lokesh</a>
+          <a href="tel:+919010616529" style="display:flex;align-items:center;gap:6px;font-size:.88rem;color:var(--primary);font-weight:600;text-decoration:none;">📞 +91 90106 16529</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:64px;">
+      <div class="section-label fade-up" style="text-align:center;display:block;margin-bottom:12px;">Why Choose Us</div>
+      <h3 class="section-title fade-up" style="text-align:center;font-size:1.6rem;margin-bottom:40px;">What Makes Lakshya Aerotech Different</h3>
+      <div class="founder-expertise-grid">
+        <div class="exp-card fade-up"><div class="exp-icon">🔬</div><div class="exp-title">Genuine OEM Parts</div><div class="exp-desc">Hobbywing, JYI, JMT and more — only authenticated components, fully stocked and ready to ship.</div></div>
+        <div class="exp-card fade-up"><div class="exp-icon">🌾</div><div class="exp-title">Agri-Tech Expertise</div><div class="exp-desc">Deep field experience in precision spraying, seeding, and crop monitoring across AP and Telangana.</div></div>
+        <div class="exp-card fade-up"><div class="exp-icon">🛡️</div><div class="exp-title">DGCA Compliance</div><div class="exp-desc">Complete guidance on UAS Rules 2021, NPNT, drone registration, and pilot licensing.</div></div>
+        <div class="exp-card fade-up"><div class="exp-icon">🔧</div><div class="exp-title">AMC & Service</div><div class="exp-desc">Certified service centre for repairs, calibration, firmware updates, and annual maintenance.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Real Stock · Real Work</div>
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-desc">A look inside Lakshya Aerotech — our inventory, products in the field, and the parts that power them.</p>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall fade-up"><img src="agri-drone-blue.jpg" alt="Agriculture Drone"></div>
+      <div class="gallery-item fade-up"><img src="drone-frames-box.jpg" alt="Drone Frames in Stock"></div>
+      <div class="gallery-item fade-up"><img src="remote-controllers.jpg" alt="Remote Controllers Stock"></div>
+      <div class="gallery-item tall fade-up"><img src="drone-night-glow.jpg" alt="Drone Night Operations"></div>
+      <div class="gallery-item fade-up"><img src="motor-x8.jpg" alt="Hobbywing X8 Motor"></div>
+      <div class="gallery-item fade-up"><img src="spray-booms.jpg" alt="Spray Booms"></div>
+      <div class="gallery-item fade-up"><img src="brushless-motors.jpg" alt="Brushless Motors"></div>
+      <div class="gallery-item fade-up"><img src="gps-flight-controller.jpg" alt="Flight Controller GPS"></div>
+      <div class="gallery-item wide fade-up"><img src="drone-frame-assembly.jpg" alt="Drone Frame Assembly"></div>
+      <div class="gallery-item fade-up"><img src="propellers-bulk.jpg" alt="Propellers Bulk Stock"></div>
+      <div class="gallery-item fade-up"><img src="escs-pumps.jpg" alt="ESCs and Pumps"></div>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section">
+  <div class="section-inner" style="margin-bottom:32px;">
+    <div class="section-label" style="text-align:center;">Trusted Brands We Stock</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:8px;">Our Brand Partners</h2>
+    <p style="text-align:center;color:var(--text-muted);font-size:.95rem;">Authorised stockist and dealer for leading drone brands and component manufacturers.</p>
+  </div>
+  <div class="partners-track-wrap">
+    <div class="partners-track">
+      <div class="partner-logo">Hobbywing</div>
+      <div class="partner-logo">JYI UAV</div>
+      <div class="partner-logo">JMT / MK Aero</div>
+      <div class="partner-logo">DJI Agras</div>
+      <div class="partner-logo">XAG</div>
+      <div class="partner-logo">Marut Drones</div>
+      <div class="partner-logo">Kisan Drone</div>
+      <div class="partner-logo">DGCA India</div>
+      <div class="partner-logo">NABARD</div>
+      <div class="partner-logo">Hobbywing</div>
+      <div class="partner-logo">JYI UAV</div>
+      <div class="partner-logo">JMT / MK Aero</div>
+      <div class="partner-logo">DJI Agras</div>
+      <div class="partner-logo">XAG</div>
+      <div class="partner-logo">Marut Drones</div>
+      <div class="partner-logo">Kisan Drone</div>
+      <div class="partner-logo">DGCA India</div>
+      <div class="partner-logo">NABARD</div>
+    </div>
+  </div>
+</section>
+
+<section id="awards" style="background:var(--white);">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Recognition</div>
+        <h2 class="section-title">Awards & Achievements</h2>
+        <p class="section-desc">Recognized for excellence in drone sales, service, and technology across Andhra Pradesh and India.</p>
+      </div>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card fade-up"><div class="award-badge">🏆</div><div class="award-year">2023</div><div class="award-name">Best Drone Retailer – South India</div><div class="award-desc">Outstanding sales and after-sales service excellence recognized at the South India Drone Conclave.</div></div>
+      <div class="award-card fade-up"><div class="award-badge">🥇</div><div class="award-year">2023</div><div class="award-name">Top Emerging Drone Startup</div><div class="award-desc">National recognition for rapid growth and innovation in one-stop drone retail and service.</div></div>
+      <div class="award-card fade-up"><div class="award-badge">🌱</div><div class="award-year">2022</div><div class="award-name">Agri-Tech Innovation Award</div><div class="award-desc">Honored for transforming precision agriculture through accessible drone technology in AP.</div></div>
+      <div class="award-card fade-up"><div class="award-badge">📋</div><div class="award-year">2024</div><div class="award-name">DGCA Authorised Dealer</div><div class="award-desc">Officially certified by DGCA to sell and service approved drone platforms across India.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="videos-section">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Success Stories</div>
+        <h2 class="section-title">Drones in Action</h2>
+        <p class="section-desc">See how Lakshya Aerotech drones are transforming farming and business across India.</p>
+      </div>
+    </div>
+    <div class="videos-grid">
+      <div class="video-card fade-up">
+        <div class="video-thumb">
+          <img src="agri-drone-blue.jpg" alt="Agri Drone Demo">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-dur">2:30</div>
+        </div>
+        <div class="video-body"><div class="video-title">How Our Agri Drone Helped a Farmer Save 40% on Input Costs</div></div>
+      </div>
+      <div class="video-card fade-up">
+        <div class="video-thumb">
+          <img src="drone-night-glow.jpg" alt="Night Spraying Demo">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-dur">1:45</div>
+        </div>
+        <div class="video-body"><div class="video-title">Night Spraying Demo — Lakshya Aerotech Hexacopter in the Field</div></div>
+      </div>
+      <div class="video-card fade-up">
+        <div class="video-thumb">
+          <img src="drone-survey-agri.jpg" alt="Mapping Drone Demo">
+          <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-dur">3:10</div>
+        </div>
+        <div class="video-body"><div class="video-title">AI Crop Mapping — How Precision Drone Surveys Are Changing Farming</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dealer-section">
+  <div class="dealer-inner">
+    <div class="dealer-content fade-up">
+      <div class="section-label">Become a Partner</div>
+      <h2 class="section-title">Grow with India's Fastest-Growing Drone Network</h2>
+      <p>India's drone industry is projected to grow at a massive rate. Join the Lakshya Aerotech dealer network and tap into a booming market across agriculture, logistics, surveillance, and more.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="#contact" class="btn-primary" style="background:white;color:var(--primary);">Apply for Dealership</a>
+        <a href="#contact" class="btn-outline" style="border-color:rgba(255,255,255,0.4);color:white;">Talk to Us</a>
+      </div>
+    </div>
+    <div class="dealer-stats fade-up">
+      <div class="dealer-stat"><div class="dealer-stat-val">25%+</div><div class="dealer-stat-lbl">Industry CAGR</div></div>
+      <div class="dealer-stat"><div class="dealer-stat-val">₹5,000 Cr</div><div class="dealer-stat-lbl">Market Size</div></div>
+      <div class="dealer-stat"><div class="dealer-stat-val">80+</div><div class="dealer-stat-lbl">Active Dealers</div></div>
+      <div class="dealer-stat"><div class="dealer-stat-val">15+</div><div class="dealer-stat-lbl">Product Lines</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="blog-section" id="blog">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Latest News</div>
+        <h2 class="section-title">From Our Blog</h2>
+      </div>
+      <a href="#" class="btn-outline">View All Posts</a>
+    </div>
+    <div class="blog-grid">
+      <a href="#" class="blog-card fade-up">
+        <div class="blog-img"><img src="drone-survey-agri.jpg" alt="DGCA Rules Blog"></div>
+        <div class="blog-body">
+          <div class="blog-cat">Drone Regulations</div>
+          <div class="blog-title">DGCA's New Drone Rules – What Every Buyer Must Know</div>
+          <div class="blog-date">May 28, 2026</div>
+        </div>
+      </a>
+      <a href="#" class="blog-card fade-up">
+        <div class="blog-img"><img src="agri-drone-blue.jpg" alt="Agri Blog"></div>
+        <div class="blog-body">
+          <div class="blog-cat">Agriculture</div>
+          <div class="blog-title">How Precision Agri Drones Are Transforming Farming in Andhra Pradesh</div>
+          <div class="blog-date">May 15, 2026</div>
+        </div>
+      </a>
+      <a href="#" class="blog-card fade-up">
+        <div class="blog-img"><img src="motor-x8.jpg" alt="Parts Blog"></div>
+        <div class="blog-body">
+          <div class="blog-cat">Tech & Parts</div>
+          <div class="blog-title">Why Genuine Hobbywing X8 Motors Matter — And How to Spot Fakes</div>
+          <div class="blog-date">Apr 30, 2026</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Let's Talk Drones</h2>
+        <p class="section-desc">Sales enquiries, spare parts orders, service bookings, or dealership applications — we're here to help.</p>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form fade-up" id="leadForm">
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:24px;">Send Us a Message</h3>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" required placeholder="Your name"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Last name"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" required placeholder="you@example.com"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" required placeholder="+91 XXXXX XXXXX"></div>
+        <div class="form-group">
+          <label>I'm Interested In</label>
+          <select required>
+            <option value="">Select a category</option>
+            <option>Agriculture Drone – Purchase</option>
+            <option>Surveillance / Industrial Drone</option>
+            <option>Spare Parts & Components</option>
+            <option>Hobbywing Motors / ESCs</option>
+            <option>Flight Controllers & GPS</option>
+            <option>Service / AMC / Repair</option>
+            <option>DGCA Pilot Training</option>
+            <option>Dealership / Partnership</option>
+            <option>Custom Drone Build</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea required placeholder="Tell us about your requirement..."></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Submit Enquiry</button>
+      </form>
+      <div class="contact-info fade-up">
+        <div class="contact-info-title">Reach Us Directly</div>
+        <p style="color:var(--text-muted);line-height:1.7;margin-bottom:24px;font-size:.95rem;">Available Monday to Saturday, 9 AM – 6 PM. We typically respond within a few hours.</p>
+        <div class="contact-card">
+          <div class="contact-card-icon">📞</div>
+          <div>
+            <div class="contact-card-title">Phone / WhatsApp</div>
+            <div class="contact-card-val">+91 90106 16529</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">✉️</div>
+          <div>
+            <div class="contact-card-title">Email</div>
+            <div class="contact-card-val">sales@lakshyaaerotech.com</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📍</div>
+          <div>
+            <div class="contact-card-title">Office Address</div>
+            <div class="contact-card-val">Mangalagiri, Andhra Pradesh, India</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🕐</div>
+          <div>
+            <div class="contact-card-title">Business Hours</div>
+            <div class="contact-card-val">Mon – Sat: 9:00 AM – 6:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div>
+      <a href="#" class="footer-brand-logo">
+        <img src="logo.jpg" alt="Lakshya Aerotech">
+        <span class="footer-brand-name">Lakshya Aerotech</span>
+      </a>
+      <p class="footer-desc">India's one-stop drone solutions store — sales, genuine spare parts, service, training, and support for every drone application. Based in Mangalagiri, Andhra Pradesh.</p>
+      <div class="footer-social">
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="Instagram">ig</a>
+        <a href="#" title="YouTube">▶</a>
+        <a href="#" title="LinkedIn">in</a>
+        <a href="#" title="WhatsApp">w</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Products</div>
+      <ul>
+        <li><a href="#products">Agriculture Drone</a></li>
+        <li><a href="#products">Surveillance Drone</a></li>
+        <li><a href="#products">Custom Build</a></li>
+        <li><a href="#spares">Hobbywing Motors</a></li>
+        <li><a href="#spares">Flight Controllers</a></li>
+        <li><a href="#spares">GPS & Accessories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Quick Links</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Founder</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Newsletter</div>
+      <p style="font-size:.85rem;line-height:1.6;margin-bottom:14px;">Stay updated on new stock, subsidies, and drone industry news.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="your@email.com">
+        <button>→</button>
+      </div>
+      <div style="margin-top:24px;">
+        <div class="footer-col-title">Contact</div>
+        <p style="font-size:.84rem;line-height:1.9;">
+          +91 90106 16529<br>
+          sales@lakshyaaerotech.com<br>
+          Mangalagiri, Andhra Pradesh
+        </p>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="footer-bottom">
+      <span>© 2026 Lakshya Aerotech. All Rights Reserved. | Precision · Innovation · Excellence</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);});
+
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Refactored Class-based menu handling script to avoid desktop layout breaks
+function toggleMenu(){
+  const links = document.getElementById('navLinks');
+  const hamburger = document.getElementById('hamburgerMenu');
+  links.classList.toggle('active');
+  hamburger.classList.toggle('active');
+}
+
+// Close mobile dropdown list gracefully when user clicks an option
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    const links = document.getElementById('navLinks');
+    const hamburger = document.getElementById('hamburgerMenu');
+    if(links.classList.contains('active')) {
+      links.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  });
+});
+
+// Proper form element interceptor
+document.getElementById('leadForm').addEventListener('submit',(e)=>{
+  e.preventDefault();
+  alert('Thank you! Our team will reach out to you within 24 hours.\n\nYou can also reach us directly at +91 90106 16529');
+  e.target.reset();
+});
+</script>
+</body>
 </html>
